@@ -2,7 +2,8 @@ import React from 'react';
 import CPUTrendsChart from '../components/charts/CPUTrendsChart';
 import StorageChart from '../components/charts/StorageChart';
 import PieChart from '../components/charts/PieChart';
-import { cpuUsageData, storageData, demandVariationData } from '../data/Data';
+import ApiTest from '../components/ApiTest';
+import { cpuUsageData, storageData } from '../data/mockData';
 
 const UsageTrends = () => {
   return (
@@ -11,6 +12,9 @@ const UsageTrends = () => {
         <h3>📊 Usage Trends Dashboard</h3>
         <p>Monitor CPU, storage, and resource usage patterns across Azure regions</p>
       </div>
+      
+      {/* Add API Test Component */}
+      <ApiTest />
       
       <div className="content-grid">
         <div className="content-card">
