@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
+import UsageTrends from './pages/UsageTrends';
+import Forecasts from './pages/Forecasts';
+import Reports from './pages/Reports';
 import './App.css';
+import './pages/Pages.css';
 
 function App() {
-  const [activeSection, setActiveSection] = useState('usage-trends');
-
-  const handleSectionChange = (section) => {
-    setActiveSection(section);
-  };
-
   return (
-    <div className="app">
-      <Header />
-      <div className="app-body">
-        <Sidebar 
-          activeSection={activeSection} 
-          onSectionChange={handleSectionChange} 
-        />
-        <MainContent activeSection={activeSection}>
-          <div className="placeholder-content">
-            <h3>Welcome to {activeSection.replace('-', ' ').toUpperCase()}</h3>
-            <p>Charts and data visualizations will go here...</p>
-          </div>
-        </MainContent>
+    <Router>
+      <div className="app">
+        <Header />
+        <div className="app-body">
+          <Sidebar />
+          <MainContent>
+            <Routes>
+              <Route path="/" element={<Navigate to="/usage-trends" replace />} />
+              <Route path="/usage-trends" element={<UsageTrends />} />
+              <Route path="/forecasts" element={<Forecasts />} />
+              <Route path="/reports" element={<Reports />} />
+            </Routes>
+          </MainContent>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 

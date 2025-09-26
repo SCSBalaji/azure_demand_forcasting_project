@@ -1,11 +1,27 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 
-const Sidebar = ({ activeSection, onSectionChange }) => {
+const Sidebar = () => {
   const menuItems = [
-    { id: 'usage-trends', label: 'Usage Trends', icon: '📊' },
-    { id: 'forecasts', label: 'Forecasts', icon: '🔮' },
-    { id: 'reports', label: 'Reports', icon: '📋' }
+    { 
+      id: 'usage-trends', 
+      label: 'Usage Trends', 
+      icon: '📊',
+      path: '/usage-trends'
+    },
+    { 
+      id: 'forecasts', 
+      label: 'Forecasts', 
+      icon: '🔮',
+      path: '/forecasts'
+    },
+    { 
+      id: 'reports', 
+      label: 'Reports', 
+      icon: '📋',
+      path: '/reports'
+    }
   ];
 
   return (
@@ -14,13 +30,15 @@ const Sidebar = ({ activeSection, onSectionChange }) => {
         <ul className="menu-list">
           {menuItems.map((item) => (
             <li key={item.id} className="menu-item">
-              <button
-                className={`menu-button ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => onSectionChange(item.id)}
+              <NavLink
+                to={item.path}
+                className={({ isActive }) => 
+                  `menu-button ${isActive ? 'active' : ''}`
+                }
               >
                 <span className="menu-icon">{item.icon}</span>
                 <span className="menu-label">{item.label}</span>
-              </button>
+              </NavLink>
             </li>
           ))}
         </ul>
