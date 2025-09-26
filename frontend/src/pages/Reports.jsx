@@ -2,7 +2,7 @@ import React from 'react';
 import StorageChart from '../components/charts/StorageChart';
 import PieChart from '../components/charts/PieChart';
 import DemandChart from '../components/charts/DemandChart';
-import { costAnalysisData, demandVariationData, storageData } from '../data/mockData';
+import { costAnalysisData, demandVariationData, storageData } from '../data/Data';
 
 const Reports = () => {
   return (

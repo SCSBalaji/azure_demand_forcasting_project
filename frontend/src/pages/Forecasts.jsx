@@ -2,7 +2,7 @@ import React from 'react';
 import CPUTrendsChart from '../components/charts/CPUTrendsChart';
 import StorageChart from '../components/charts/StorageChart';
 import DemandChart from '../components/charts/DemandChart';
-import { forecastData, monthlyCapacityData, demandVariationData } from '../data/mockData';
+import { forecastData, monthlyCapacityData, demandVariationData } from '../data/Data';
 
 const Forecasts = () => {
   return (
