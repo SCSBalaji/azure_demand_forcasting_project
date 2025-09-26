@@ -1,4 +1,8 @@
 import React from 'react';
+import StorageChart from '../components/charts/StorageChart';
+import PieChart from '../components/charts/PieChart';
+import DemandChart from '../components/charts/DemandChart';
+import { costAnalysisData, demandVariationData, storageData } from '../data/mockData';
 
 const Reports = () => {
   return (
@@ -10,24 +14,27 @@ const Reports = () => {
       
       <div className="content-grid">
         <div className="content-card">
-          <h4>Weekly Summary Report</h4>
-          <div className="placeholder-chart">
-            <p>📄 Weekly performance summary will be here</p>
-          </div>
+          <h4>Monthly Cost Analysis</h4>
+          <StorageChart 
+            data={costAnalysisData} 
+            title="Cost Breakdown by Service ($)"
+          />
         </div>
         
         <div className="content-card">
-          <h4>Cost Analysis</h4>
-          <div className="placeholder-chart">
-            <p>💰 Cost breakdown charts will be here</p>
-          </div>
+          <h4>Service Cost Distribution</h4>
+          <PieChart 
+            data={costAnalysisData} 
+            title="Cost Distribution by Azure Service"
+          />
         </div>
         
         <div className="content-card">
-          <h4>Optimization Insights</h4>
-          <div className="placeholder-chart">
-            <p>🎯 Performance insights will be displayed here</p>
-          </div>
+          <h4>Performance Trends</h4>
+          <DemandChart 
+            data={demandVariationData} 
+            title="Weekly Performance Metrics"
+          />
         </div>
       </div>
     </div>
