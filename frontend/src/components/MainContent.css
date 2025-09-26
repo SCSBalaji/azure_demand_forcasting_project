@@ -1,0 +1,35 @@
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    background: #ffffff;
+    min-height: calc(100vh - 80px);
+}
+
+.content-header {
+    margin-bottom: 2rem
+}
+
+.section-title {
+    margin: 0;
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.content-body {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 2rem;
+    min-height: 400px;
+}
+
+@media (max-width: 768px)
+{
+    .main-content {
+        padding: 1rem;
+    }
+
+    .content-body {
+        padding: 1rem;
+    }
+}

@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, {useState} from "react";
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
+import MainContent from './components/MainContent'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activeSection, setActiveSection] = useState('usage-trends');
+
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app">
+      <Header />
+      <div className="app-body">
+        <Sidebar
+          activeSection={activeSection}
+          onSectionChange={handleSectionChange}
+        />
+        <MainContent activeSection={activeSection}>
+          <div className="placeholder-content">
+            <h3>Welcome to {activeSection.replace('-', ' ').toUpperCase()}</h3>
+            <p>Charts and data visualization will go here...</p>
+          </div>
+        </MainContent>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
