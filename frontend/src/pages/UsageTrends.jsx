@@ -3,7 +3,7 @@ import CPUTrendsChart from '../components/charts/CPUTrendsChart';
 import StorageChart from '../components/charts/StorageChart';
 import PieChart from '../components/charts/PieChart';
 import ApiTest from '../components/ApiTest';
-import { cpuUsageData, storageData } from '../data/mockData';
+import { cpuUsageData, storageData } from '../data/Data';
 
 const UsageTrends = () => {
   return (

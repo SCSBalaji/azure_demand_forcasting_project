@@ -2,7 +2,8 @@
 // This file contains placeholder functions that simulate API calls
 // Later, these will be replaced with actual backend API endpoints
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+// Fixed: Use import.meta.env instead of process.env for Vite
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
 // Simulate network delay for realistic API behavior
 const simulateDelay = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
