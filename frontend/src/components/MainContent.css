@@ -1,12 +1,17 @@
 .main-content {
   flex: 1;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
   background: #ffffff;
-  min-height: calc(100vh - 80px);
+  height: 100%;
+  overflow: hidden;
 }
 
 .content-header {
-  margin-bottom: 2rem;
+  padding: 1.5rem 2rem 1rem 2rem;
+  background: #ffffff;
+  border-bottom: 1px solid #e1e5e9;
+  flex-shrink: 0;
 }
 
 .section-title {
@@ -17,18 +22,26 @@
 }
 
 .content-body {
+  flex: 1;
   background: #f8f9fa;
+  margin: 1rem 2rem 2rem 2rem;
   border-radius: 12px;
   padding: 2rem;
-  min-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
-  .main-content {
+  .content-header {
     padding: 1rem;
   }
   
   .content-body {
+    margin: 1rem;
     padding: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
   }
 }

@@ -4,20 +4,28 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f5f5f5;
 }
 
+#root {
+  height: 100vh;
+}
+
 .app {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .app-body {
   display: flex;
   flex: 1;
+  height: calc(100vh - 80px);
+  overflow: hidden;
 }
 
 .placeholder-content {
@@ -34,5 +42,6 @@ body {
 @media (max-width: 768px) {
   .app-body {
     flex-direction: column;
+    height: calc(100vh - 70px);
   }
 }
