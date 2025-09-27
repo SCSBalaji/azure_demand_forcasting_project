@@ -1,13 +1,24 @@
 from fastapi import FastAPI, Response
+from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 
 app = FastAPI(title="Azure Demand Forecasting API")
+
+# Add CORS middleware to allow frontend access
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 DATA_PATH = "data/processed/cleaned_merged.csv"
 df = pd.read_csv(DATA_PATH, parse_dates=['date'])
 
 @app.get("/api/usage-trends")
 def usage_trends():
+    """Get CPU usage trends grouped by date and region"""
     trends = (
         df.groupby(['date', 'region'])['usage_cpu']
         .mean()
@@ -18,6 +29,7 @@ def usage_trends():
 
 @app.get("/api/top-regions")
 def top_regions():
+    """Get top 5 regions by total CPU usage"""
     region_sums = (
         df.groupby('region')['usage_cpu']
         .sum()
@@ -30,11 +42,18 @@ def top_regions():
 
 @app.get("/api/raw-data")
 def raw_data():
+    """Get all raw data from cleaned_merged.csv"""
     return df.to_dict(orient='records')
 
-    # To download as csv file
-    # csv_data = df.to_csv(index=False)
-    # return Response(content=csv_data, media_type="text/csv")
+@app.get("/api/health")
+def health_check():
+    """Health check endpoint"""
+    return {
+        "status": "healthy",
+        "message": "Azure Demand Forecasting API is running",
+        "data_loaded": len(df),
+        "columns": list(df.columns)
+    }
 
 @app.get("/")
 def root():
